@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function Form() {
   return (
-    <div className="form-component">
-
+    <div className="team-member-form">
+        <input />
     </div>
   );
 }

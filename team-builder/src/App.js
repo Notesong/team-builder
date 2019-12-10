@@ -4,12 +4,7 @@ import TeamMembers from './components/TeamMembers';
 import './App.css';
 
 function App() {
-  const [teamMembers, setTeamMembers] = useState([
-    {
-      name: '', 
-      role: '',
-      email: '', 
-    }]);
+  const [teamMembers, setTeamMembers] = useState([{ name: '', role: '', email: '' }]);
 
   const addNewMember = teamMember => {
     const newTeamMember = {

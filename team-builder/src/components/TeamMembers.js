@@ -1,17 +1,18 @@
 import React from 'react';
 
-function TeamMembers(props) {
+const TeamMembers = props => {
+    console.log(props.teamMembers);
   return (
     <div className="team-member-list">
-        {props.teamMembers.map(member => {
+        {props.teamMembers.map(member => (
             <div className='teamMember' key={member.id}>
                 <h2>{member.name}</h2>
-                <p>{member.role}</p>
-                <p>{member.email}</p>
+                <p>Role: {member.role}</p>
+                <p>Email: {member.email}</p>
             </div>
-        })}
+        ))}
     </div>
   );
-}
+};
 
 export default TeamMembers;

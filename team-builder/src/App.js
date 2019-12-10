@@ -16,7 +16,7 @@ function App() {
 
     const newTeamMemberList = [...teamMembers, newTeamMember];
     setTeamMembers(newTeamMemberList);
-  }
+  };
 
   return (
     <div className="App">

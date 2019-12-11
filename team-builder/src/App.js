@@ -1,10 +1,26 @@
 import React, { useState} from 'react';
-import Form from './components/Form';
+import MemberForm from './components/MemberForm';
 import TeamMembers from './components/TeamMembers';
 import './App.css';
 
 function App() {
-  const [teamMembers, setTeamMembers] = useState([{ name: '', role: '', email: '' }]);
+  const [teamMembers, setTeamMembers] = useState([
+    {
+      name: 'Jane Dixon', 
+      role: 'UI', 
+      email: 'jane@gmail.com'
+    },
+    {
+      name: 'John Douglas', 
+      role: 'Frontend', 
+      email: 'john@gmail.com'
+    },
+    {
+      name: 'Jasper Daniels', 
+      role: 'Backend', 
+      email: 'Jasper@gmail.com'
+    }
+  ]);
 
   const addNewMember = teamMember => {
     const newTeamMember = {
@@ -20,8 +36,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Team Members</h1>
-      <Form addNewMember={addNewMember} />
+      <h1 className="center">Team Members</h1>
+      <MemberForm addNewMember={addNewMember} />
       <TeamMembers teamMembers={teamMembers} />
     </div>
   );

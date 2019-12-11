@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import React from 'react';
+import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-function MemberForm({ addNewMember }) {
-    const [member, setMember] = useState([{ name: '', role: '', email: '' }]);
+function MemberForm({ addNewMember, member, setMember }) {
 
     const handleChanges = event => {
         setMember({ ...member, [event.target.name]: event.target.value});
@@ -13,14 +12,14 @@ function MemberForm({ addNewMember }) {
         addNewMember(member);
 
         resetForm();
-    }
+    };
 
     const resetForm = () => {
         setMember({ name: '', role: '', email: '' });
-    }
+    };
 
     return (
-        <Form onSubmit={submitForm}>
+        <Form onSubmit={submitForm} autoComplete="on">
             <FormGroup row>
                 <Label htmlFor='name' sm={2}>Name:</Label>
                 <Col sm={10}>
@@ -30,6 +29,7 @@ function MemberForm({ addNewMember }) {
                     name='name'
                     onChange={handleChanges}
                     value={member.name}
+                    maxLength='15'
                     /> 
                 </Col>
             </FormGroup>
@@ -42,6 +42,7 @@ function MemberForm({ addNewMember }) {
                         name='role'
                         onChange={handleChanges}
                         value={member.role}
+                        maxLength='25'
                     /> 
                 </Col>
             </FormGroup>
@@ -58,8 +59,8 @@ function MemberForm({ addNewMember }) {
                 </Col>
             </FormGroup>
             <div className="center">
-                <Button type='submit' className="submit-button">Add Member</Button>
-                <Button type='reset' className="submit-button" onClick={resetForm}>Reset</Button>
+                <Button type='submit' className="form-button">Add Member</Button>
+                <Button type='reset' className="form-button" onClick={resetForm}>Reset</Button>
             </div>
         </Form>
     );

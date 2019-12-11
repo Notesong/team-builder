@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+body {
+  padding: 3rem;
+}
+
+.form-button {
+  margin: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 2rem;
+}
+
+.card {
+  margin-bottom: 2rem;
+}

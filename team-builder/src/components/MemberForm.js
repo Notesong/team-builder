@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-function MemberForm({ addNewMember, member, setMember, isEditing, setIsEditing }) {
+function MemberForm({ addNewMember, member, setMember, isEditing, setIsEditing, teamMembers, setTeamMembers }) {
     const [submitButtonText, setSubmitButtonText] = useState('Add Member');
 
     const handleChanges = event => {
@@ -9,19 +9,35 @@ function MemberForm({ addNewMember, member, setMember, isEditing, setIsEditing }
     };
 
     const submitForm = event => {
-        event.preventDefault();
+        event.preventDefault();     
+
+        // remove edited member card if editing
+        if(isEditing) {
+            let index = teamMembers.findIndex(item => item.id === member.id);
+            setTeamMembers(teamMembers.splice(index, 1));
+            console.log("ID: ", member.id);
+            console.log("Name: ", member.name);
+            console.log("Role: ", member.role);
+            console.log("Email: ", member.email);
+        }
+
+        member.id = Date.now()
         addNewMember(member);
+
+        console.log(teamMembers);
 
         resetForm();
     };
 
     const resetForm = () => {
-        setMember({ name: '', role: '', email: '' });
-        if(isEditing === true) {
+        setMember({ id: '', name: '', role: '', email: '' });
+        // if user is editing, this will prompt submit button's text to change within useEffect
+        if(isEditing) {
             setIsEditing(false);
         }
     };
 
+    // updates submit button based on whether user is editing a member card
     useEffect(() => {
         if(isEditing === false) {
             setSubmitButtonText('Add Member');

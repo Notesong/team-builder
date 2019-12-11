@@ -6,6 +6,7 @@ export default function NewComponent({ setMember, member, setIsEditing }) {
     const [cardMember, setCardMember] = useState(member)
 
     function editMemberCard() {
+        // boolean change will prompt the submit button to change its text
         setIsEditing(true);
         setMember(cardMember);
     }

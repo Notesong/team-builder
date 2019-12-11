@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-function MemberForm({ addNewMember, member, setMember }) {
+function MemberForm({ addNewMember, member, setMember, isEditing, setIsEditing }) {
+    const [submitButtonText, setSubmitButtonText] = useState('Add Member');
 
     const handleChanges = event => {
         setMember({ ...member, [event.target.name]: event.target.value});
@@ -16,7 +17,18 @@ function MemberForm({ addNewMember, member, setMember }) {
 
     const resetForm = () => {
         setMember({ name: '', role: '', email: '' });
+        if(isEditing === true) {
+            setIsEditing(false);
+        }
     };
+
+    useEffect(() => {
+        if(isEditing === false) {
+            setSubmitButtonText('Add Member');
+        } else {
+            setSubmitButtonText('Edit Member');
+        }
+    },[isEditing]);
 
     return (
         <Form onSubmit={submitForm} autoComplete="on">
@@ -59,7 +71,7 @@ function MemberForm({ addNewMember, member, setMember }) {
                 </Col>
             </FormGroup>
             <div className="center">
-                <Button type='submit' className="form-button">Add Member</Button>
+                <Button type='submit' className="form-button" id="submit">{submitButtonText}</Button>
                 <Button type='reset' className="form-button" onClick={resetForm}>Reset</Button>
             </div>
         </Form>

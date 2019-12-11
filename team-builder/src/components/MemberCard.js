@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Card, Button, CardHeader, CardBody, CardTitle, CardText } from 'reactstrap';
 
-export default function NewComponent({ setMember, member }) {
+export default function NewComponent({ setMember, member, setIsEditing }) {
 
-    const [cardMember] = useState(member)
+    const [cardMember, setCardMember] = useState(member)
 
     function editMemberCard() {
-        setMember(cardMember)
+        setIsEditing(true);
+        setMember(cardMember);
     }
 
     return(
@@ -17,6 +18,6 @@ export default function NewComponent({ setMember, member }) {
                 <CardText>Email: {member.email}</CardText>
                 <Button size='sm' outline onClick={editMemberCard}>Edit</Button>
             </CardBody>
-        </Card>  
+        </Card>
     )
 }

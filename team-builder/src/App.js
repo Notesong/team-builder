@@ -1,10 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import MemberForm from './components/MemberForm';
 import TeamMembers from './components/TeamMembers';
 import './App.css';
 
 function App() {
   const [member, setMember] = useState([{ name: '', role: '', email: '' }]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const [teamMembers, setTeamMembers] = useState([
     {
@@ -42,8 +43,8 @@ function App() {
   return (
     <div className="App">
       <h1 className="center">Team Members</h1>
-      <MemberForm addNewMember={addNewMember} member={member} setMember={setMember}/>
-      <TeamMembers teamMembers={teamMembers} setMember={setMember}/>
+      <MemberForm addNewMember={addNewMember} member={member} setMember={setMember} isEditing={isEditing} setIsEditing={setIsEditing} />
+      <TeamMembers teamMembers={teamMembers} setMember={setMember} setIsEditing={setIsEditing} />
     </div>
   );
 }

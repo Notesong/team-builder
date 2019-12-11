@@ -8,7 +8,7 @@ const TeamMembers = props => {
         <Row>
             {props.teamMembers.map(member => (
                 <Col sm="6" md="3" className='teamMember' key={member.id}>                        
-                    <MemberCard member={member} setMember={props.setMember}/>                                          
+                    <MemberCard member={member} setMember={props.setMember} setIsEditing={props.setIsEditing} />                                          
                 </Col>
             ))}            
         </Row>
